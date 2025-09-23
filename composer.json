@@ -1,0 +1,13 @@
+{
+    "name": "briavers/image-bg-position",
+    "description": "Expand the media library to allow you to set a focal point",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Brian Verschoore",
+            "email": "brian@stampr.be"
+        }
+    ],
+    "minimum-stability": "stable"
+}

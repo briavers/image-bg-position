@@ -36,7 +36,16 @@ class WPIBP_Plugin
         add_filter('attachment_fields_to_edit', [$this, 'custom_media_add_media_custom_field'], null, 2);
         add_filter('wp_get_attachment_image_attributes', [$this, 'filter_gallery_img_atts'], 10, 2);
 
-        wp_enqueue_style('image-bg-css', plugin_dir_url($this->plugin_file_name ) . 'src/bg-image-admin.css');
+        // Properly enqueue admin scripts and styles using the admin_enqueue_scripts hook
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_assets']);
+    }
+
+    /**
+     * Enqueue admin scripts and styles
+     */
+    public function enqueue_admin_assets()
+    {
+        wp_enqueue_style('image-bg-css', plugin_dir_url($this->plugin_file_name) . 'src/bg-image-admin.css');
         wp_enqueue_script('image-bg-js', plugin_dir_url($this->plugin_file_name) . 'src/bg-image-script.js', ['jquery']);
     }
 
@@ -109,4 +118,3 @@ class WPIBP_Plugin
         return $atts;
     }
 }
-
